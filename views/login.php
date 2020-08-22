@@ -6,20 +6,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	
-	<link rel="stylesheet" href="../public/css/styles.css">
-
-
-	
-  
-  <!-- Bootstrap 3.3.5 -->
-  <!-- <link rel="stylesheet" href="../public/css/bootstrap.min.css"> -->
-  <!-- Font Awesome -->
-  <!-- <link rel="stylesheet" href="../public/css/font-awesome.css"> -->
+	<link rel="stylesheet" href="../public/css/login.css">
 	
 </head>
 <body>
 
-    <form name="frmAcceso" id="frmAcceso"  method="POST" class="login"> <!-- id esta siendo llamado al archivo login.js-->
+    <form name="frmAcceso" id="frmAcceso"  method="POST" class="login">
 		
 	  <figure class="image">
 	    	<img src="../public/images/coffeeShop.svg" alt="CoffeeShop" />
@@ -36,7 +28,7 @@
 
 		<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-6">
-			<button class=" form-control  btn-block button cafe"  onclick="registro()" >Registro</button> <!-- href="pedidos.php-->
+			<button class=" form-control  btn-block button cafe"  onclick="registro()" >Registro</button> 
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-6">
 			<button id="btnSubmit" class="form-control btn-block button verde" type="submit" (click)="onSubmit()">Ingresar</button>
@@ -61,7 +53,7 @@
 <script>
 
   var existe;
-  $login=$("#login").val(); // almaceno lo que el usuario escriba en el imput del formulario cullo id es $login
+  $login=$("#login").val(); 
   $clave1=$("#clave1").val();
 
 

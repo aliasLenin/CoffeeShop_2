@@ -6,33 +6,66 @@ require 'header.php';
 
 ?>
 
-<section>
+<section class="section">
 
+<div class="col-lg-3 col-md-3 col-sm-12">  
+  <div class="row color-coffe">      
     <div>
-      <h2>Cola</h2>
+        <h2 class="title">cola</h2>
+            
+            <div class="color-dist" id="orden" name="orden"> 
+                <div class="aling-text">
+                    <span>234567</span>
+                    <span class="color-oro">eliosinH</span>
+                </div>
+                    <hr/>
+                <p class="text-center">
+                    <strong>5</strong> Sandwich,
+                    <strong>2</strong> Café 
+                </p>
+            </div>
+
+            <div class="color-dist"> 
+                <div class="aling-text">
+                    <span>234567</span>
+                    <span class="color-oro">eliosinH</span>
+                </div>
+                    <hr/>
+                <p class="text-center">
+                    <strong>5</strong> Sandwich,
+                    <strong>2</strong> Café 
+                </p>
+            </div>
+
+    </div>
+  </div>
+</div>
+ 
+<div class="col-lg-3 col-md-3 col-sm-12">
+   <div class="row color-coffe">  
+    <div>
+      <h2 class="title">Preparación</h2>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-12">
+  <div class="row color-coffe">  
+    <div>
+      <h2 class="title">Finalizado</h2>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-lg-3 col-md-3 col-sm-12">
+   <div class="row color-coffe">  
+ 
       <div>
-        <div>
-          <span id="id">234567</span>
-          <span>eliosinH</span>
-        </div>
-        <hr/>
-        <p><strong>5</strong> Sandwich, <strong>2</strong> Café </p>
+        <h2 class="title">Entregado</h2>
       </div>
     </div>
-
-    <div>
-      <h2>Preparación</h2>
-    </div>
-
-    <div>
-      <h2>Finalizado</h2>
-    </div>
-
-    <div>
-      <h2>Entregado</h2>
-    </div>
-
-    <div id="ulListado"></div>
+</div>
 
 </section>
 
@@ -44,41 +77,46 @@ require 'footer.php';
 
 <script>
 
+  let array= [];
 
   $(document).ready(function () {
 
-    cargarProducts();
+    getOrders();
 
   });
 
-  function cargarProducts(){
+  function getOrders(){
 
-    <?php 
-        $url = "https://iitd7euw75.execute-api.us-east-1.amazonaws.com/services/products/getProducts";
-        $json = file_get_contents($url);
-        $datos = json_encode($json);
+      $.ajax({
+          url: "../controllers/ordenes.php?op=getOrders",
+          type: "GET",          
+                  
+          success: function(datos)
+              {                                                         
+                  //console.log(datos); 
+                  listarOrdenes(datos);              
+              }
+      });
 
-    ?>  
-    var arrayAPI = <?php echo $datos; ?>;
-    console.log(arrayAPI);
-    //listarProducts(arrayAPI);
+          
+  }
+
+
+
+  function listarOrdenes(arrayAPI){
+
+    //console.log(arrayAPI);
+        
+    array = JSON.parse(arrayAPI)['items'];
+    console.log(array);
+
+
 
 
   }
 
 
 
-
-
-
-
-  function listarProducts(arrayAPI){
-
-  console.log(arrayAPI);
-
-
-
-}
 
 
 

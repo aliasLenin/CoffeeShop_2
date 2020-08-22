@@ -6,20 +6,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	
-	<link rel="stylesheet" href="../public/css/styles.css">
+	<link rel="stylesheet" href="../public/css/login.css">
 
 
-	
-  
-  <!-- Bootstrap 3.3.5 -->
-  <!-- <link rel="stylesheet" href="../public/css/bootstrap.min.css"> -->
-  <!-- Font Awesome -->
-  <!-- <link rel="stylesheet" href="../public/css/font-awesome.css"> -->
 	
 </head>
 <body>
 
-    <form name="form_registro" id="form_registro" method="POST" class="login"> <!-- id esta siendo llamado al archivo login.js-->
+    <form name="form_registro" id="form_registro" method="POST" class="login"> 
 		
 	  <figure class="image">
 	    	<img src="../public/images/coffeeShop.svg" alt="CoffeeShop" />
@@ -53,7 +47,7 @@
            <button onclick="cancelarform()" class="form-control btn-block button red">Cancelar</button>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6">
-          <!-- <button onclick="guardar()" class="form-control btn-block button verde">Guardar</button>-->
+       
                <button class="form-control btn-block button verde" type="submit" id="btnGuardar" >Guardar</button> 
           
         </div>
@@ -80,7 +74,7 @@
   //Función cancelarform
   function cancelarform()
   {
-      //alert('Redireccionando a login.php');
+      
       location.href="http://localhost/CoffeeShop_2/views/login.php"
       limpiar();
   }
@@ -114,7 +108,7 @@
               //console.log('datos del form_registro :' + formData );
 
               $.ajax({
-                url: "../controllers/usuario.php?op=guardaryeditar",
+                  url: "../controllers/usuario.php?op=guardaryeditar",
                   type: "POST",
                   data: formData,
                   contentType: false,
@@ -130,8 +124,6 @@
               });
               limpiar();
            }
-          
-  
   })
   
 
@@ -196,7 +188,7 @@ function validarUsuario() {
     bootbox.alert("El nombre de usuario supera la cantidad de caracteres permitidos, maximo son 50");
     return false;
 
-    }else if (clave1 == ""){ //en el num_documento viene vacio es xq escribio nada
+    }else if (clave1 == ""){
 
     bootbox.alert("El campo de la primer contrasena es requerido");
     return false;
@@ -211,7 +203,7 @@ function validarUsuario() {
     bootbox.alert("El campo de la primer contrasena supera la cantidad de caracteres permitidos, maximo son 50 caracteres");
     return false;
 
-    }else if (clave2 == ""){ //en el num_documento viene vacio es xq escribio nada
+    }else if (clave2 == ""){ 
 
     bootbox.alert("El campo de la segunda contrasena es requerido");
     return false;
@@ -245,14 +237,14 @@ function validarUsuario() {
 function validarEmail(){
 
 var expresionEmail;
-	  expresionEmail =  /\w+@\w+\.+[a-z]/; // este es el fomato obligatorio que debe de cumplir el email en caso de que el usuario tengo email
+	  expresionEmail =  /\w+@\w+\.+[a-z]/; 
 
 var email;
 email = $("#email").val();
 
 
    
-    if (email != ""){ //en el email que viene no es igual a vacio fue xq escribio algo
+    if (email != ""){ 
 
 		    if (email.length > 50){
 
@@ -261,7 +253,7 @@ email = $("#email").val();
 
 		    }
 
-			if (!expresionEmail.test(email)){// si la expresion email que ya esta guardada como predeterminada es diferente a la que se escribio
+			if (!expresionEmail.test(email)){
 
 				bootbox.alert("El correo electronico que escribio no cumple con el formato");
 				return false;
@@ -274,7 +266,7 @@ email = $("#email").val();
 function validarClaves(){
 
   var expresion;
-  expresion =  /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/; // obligatoriamente valla con numeros letras y mayusculas
+  expresion =  /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/; 
   clave1 = $("#clave1").val();
 	clave2 = $("#clave2").val();
 

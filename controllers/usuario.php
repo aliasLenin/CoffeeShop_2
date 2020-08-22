@@ -23,26 +23,26 @@ switch ($_GET["op"]){
 
     case 'guardaryeditar':
 
-        $clavehash=$objEncriptar->encryption($clave1); // envio la contrasena a encriptar 
+        $clavehash=$objEncriptar->encryption($clave1); 
 
-        // le enviamos los dos parametro a la funcion verificar del modelo 
-        $rspta=$objUsuario->verificar($login, $clavehash);  //mando a buscar el usuario a la base de datos
       
-        while ($reg = $rspta->fetch_object()) // recorro el objeto encontrado
+        $rspta=$objUsuario->verificar($login, $clavehash);  
+      
+        while ($reg = $rspta->fetch_object()) 
             {
               $aux_login = $reg->login; 
               $aux_clave = $reg->clave;         
             } 
-       $clavehash2=$objEncriptar->decryption($aux_clave); // envio a desencriptar la clave encontrada encriptada proviniente de la bd
+       $clavehash2=$objEncriptar->decryption($aux_clave);
           //echo $clavehash2;
         
-       if (empty($clavehash2) && empty($aux_login) ){ // si las variables estan vacias, no exite no se encuntra registrado
+       if (empty($clavehash2) && empty($aux_login) ){ 
         //echo 'vacio:'.$clavehash2;
-          $rspta=$objUsuario->insertar($nombre,$email,$login,$clavehash); //mando a guardar el usuario
+          $rspta=$objUsuario->insertar($nombre,$email,$login,$clavehash); 
           echo $rspta ? "Usuario registrado" : "Usuario no se pudo registrar";
           //echo $nombre .$email.$login.$clave1 ;
 
-      }else{ // si las variables se encuentran llenas es por que existe se encuentra registrado
+      }else{ 
         echo 'El usuario: '. $aux_login . ' ya se encuentra registrado';      
       } 
        
@@ -53,8 +53,8 @@ switch ($_GET["op"]){
                       
       $clavehash=$objEncriptar->encryption($clave1); // envio la contrasena a encriptar 
 
-      // le enviamos los dos parametro a la funcion verificar del modelo 
-      $rspta=$objUsuario->verificar($login, $clavehash);  //mando a buscar el usuario a la base de datos
+    
+      $rspta=$objUsuario->verificar($login, $clavehash);  
     
      
 
@@ -67,7 +67,7 @@ switch ($_GET["op"]){
      $clavehash2=$objEncriptar->decryption($aux_clave); // envio a desencriptar la clave encontrada encriptada proviniente de la bd
       //echo $clavehash2;
 
-      if (empty($clavehash2) && empty($aux_login) ){ // si las variables estan vacias, no exite no se encuntra registrado
+      if (empty($clavehash2) && empty($aux_login) ){
         $existe = 0;
         echo $existe;    
       
